@@ -1,5 +1,7 @@
 # Kubernetes (K8)
+
 ![](img/Kubernetes_icon.png)
+
 ## What is Kubernetes? (K8)
 - Open-source container orchestration platform
 - Developed and run by Google
