@@ -2,6 +2,16 @@
 
 ![](img/kubernetes_icon.png)
 
+- [Kubernetes (K8)](#kubernetes-k8)
+  - [What is Kubernetes? (K8)](#what-is-kubernetes-k8)
+  - [Benefits of Kubernetes](#benefits-of-kubernetes)
+  - [Definitions](#definitions)
+    - [Pod](#pod)
+    - [Nodes](#nodes)
+    - [Master Node](#master-node)
+    - [Cluster](#cluster)
+  - [Kubernetes Installation](#kubernetes-installation)
+
 ## What is Kubernetes? (K8)
 - Open-source container orchestration platform
 - Developed and run by Google
