@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: node
-          image: ahskhan/eng89_node_prod
+          image: sachadorf/sre_node_app:v1
 
           ports:
           - containerPort: 3000
