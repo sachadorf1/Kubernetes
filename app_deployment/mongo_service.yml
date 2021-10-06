@@ -11,10 +11,8 @@ metadata:
 # Specification to include ports Selector to connect
 spec:
   ports:
-  - nodePort: 27017
-    port: 27017
-    protocol: TCP
-    targetPort: 27017
+    - port: 27017
+      targetPort: 27017
 
 # Let's define the selector and label to connect to nginx
   selector:

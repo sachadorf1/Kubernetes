@@ -274,17 +274,18 @@ spec:
           image: mongo
           ports:
           - containerPort: 27017
-          volumeMounts:
-          - name: storage
-            mountPath: /data/db
-      volumes:
-        name: test-volume
-        hostPath:
-         # directory location on host
-          path: /data
-          # this field is optional
-          type: Directory
+          # volumeMounts:
+          # - name: storage
+          #   mountPath: /data/db
+      # volumes:
+      #   name: test-volume
+      #   hostPath:
+      #    # directory location on host
+      #     path: /data
+      #     # this field is optional
+      #     type: Directory
 ```
+- The volume parts are commented out and will be included when we want to add a persistent volume
 ### mongo_service.yml
 ```
 # Select the type of API version and type of service
@@ -299,31 +300,32 @@ metadata:
 # Specification to include ports Selector to connect
 spec:
   ports:
-  - nodePort: 27017
-    port: 27017
-    protocol: TCP
-    targetPort: 27017
+    - port: 27017
+      targetPort: 27017
 
 # Let's define the selector and label to connect to nginx
   selector:
     app: mongo # this label connects this service to deployment
 ```
+- Once you have the mongo deployment and service running, run the node deployment (uncommenting the env part) and the node service
+- Run this command: `kubectl exec pod-name node seeds/seed.js` to seed the database
+- You should see the posts page seeded and working on localhost:3000/posts
 ### mongo_pv.yml
 ```
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mongo_pv
+  name: mongo-pv
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   capacity:
     storage: 256Mi
   claimRef:
-    name: mongo_pv_claim
+    name: mongo-pv-claim
     namespace: default
-  hostpath:
-    path: /data/db
+  hostPath:
+    path: /data
     type: Directory
 ```
 ### mongo_pvc.yml
@@ -331,7 +333,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongo_pv_claim
+  name: mongo-pv-claim
 spec:
   accessModes:
     - ReadWriteOnce
