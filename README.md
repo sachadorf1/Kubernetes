@@ -42,7 +42,6 @@
 
 ## Benefits of Kubernetes
 - Service discovery and load balancing
-- 
 - Easy to scale your application
 - Keep code operational and speeds up the delivery process
 - Portability and flexibility
