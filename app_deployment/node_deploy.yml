@@ -1,0 +1,31 @@
+# Create a diagram for node deployment and service
+# use the example of nginx deployment and service
+# Nodeapp deployment to have 3 pods min -
+# service within the same cluster and namespace to connect to node deployment
+# type Loadbalancer
+# End goal is to see our node app running port localhost:3000
+# The working image of our nodeapp
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node
+spec:
+  selector:
+    matchLabels:
+      app: node
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+        - name: node
+          image: ahskhan/eng89_node_prod
+
+          ports:
+          - containerPort: 3000
+          env:
+          - name: DB_HOST
+            value: mongodb://mongo:27017/posts

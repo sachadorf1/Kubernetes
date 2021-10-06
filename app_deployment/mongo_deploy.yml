@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo # naming
+
+spec:
+  selector:
+    matchLabels:
+      app: mongo # look for this label to match with k8 service
+  replicas: 1
+  # Let's define the container spec
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo
+          ports:
+          - containerPort: 27017
+          volumeMounts:
+          - name: storage
+            mountPath: /data/db
+      volumes:
+        name: test-volume
+        hostPath:
+         # directory location on host
+          path: /data
+          # this field is optional
+          type: Directory
+      # persistent: true

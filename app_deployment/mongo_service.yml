@@ -1,0 +1,21 @@
+---
+# Select the type of API version and type of service
+apiVersion: v1
+kind: Service
+# Metadata for name
+metadata:
+
+  name: mongo
+  namespace: default
+
+# Specification to include ports Selector to connect
+spec:
+  ports:
+  - nodePort: 27017
+    port: 27017
+    protocol: TCP
+    targetPort: 27017
+
+# Let's define the selector and label to connect to nginx
+  selector:
+    app: mongo # this label connects this service to deployment
