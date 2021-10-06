@@ -51,8 +51,7 @@
 - Multi-cloud capability
 
 ## What are the differences between containers and virtual machines?
-- With VMs, you can run each component on a separate machine
-- With 
+![](img/containers-vs-virtual-machines.png)
 
 ## Definitions
 ### Pod
